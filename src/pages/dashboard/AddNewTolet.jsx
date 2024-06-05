@@ -94,6 +94,7 @@ function AddNewTolet() {
               method: "POST",
               headers: {
                 "Content-type": "application/json",
+                token: localStorage.getItem("token"),
               },
               body: JSON.stringify(tolet),
             }
@@ -180,7 +181,6 @@ function AddNewTolet() {
               id="availableFrom"
               className="block w-full h-10 border-2 rounded-md px-2 outline-none outline-2 p-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
               placeholder="Available From"
-              required
             />
           </div>
           <div className="flex items-center text-sm text-gray-600">

@@ -35,6 +35,16 @@ export default function Registration() {
     const newUser = { name, email, password };
     createUserWithEmailAndPassword(email, password);
     console.log(newUser);
+    fetch("https://tolet-backend-7e9u.onrender.com/adduser", {
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ name, email }),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+
     setShowToast(true);
 
     console.log("user created successfully");
@@ -74,7 +84,7 @@ export default function Registration() {
                         type="name"
                         autoComplete="name"
                         required
-                        className="block px-2 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block px-2 w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -92,7 +102,7 @@ export default function Registration() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -123,7 +133,7 @@ export default function Registration() {
                             errorMessage.style.display = "none";
                           }
                         }}
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
                       />
                       <p
                         className="mt-2 text-sm text-red-600 password-error-message"
@@ -137,7 +147,7 @@ export default function Registration() {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                     >
                       Register
                     </button>
@@ -145,7 +155,7 @@ export default function Registration() {
                   <p className="text-center">
                     Already have an account?{" "}
                     <Link
-                      className="font-semibold text-indigo-600 hover:text-indigo-500"
+                      className="font-semibold text-teal-600 hover:text-teal-500"
                       to="/login"
                     >
                       Login

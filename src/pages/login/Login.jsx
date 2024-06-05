@@ -27,7 +27,16 @@ export default function Login() {
     const email = form.email.value;
     // const password = form.password.value;
     signInWithEmailAndPassword(email, password);
-    console.log("Loggedin Successful");
+
+    fetch("https://tolet-backend-7e9u.onrender.com/jwt", {
+      headers: {
+        "content-type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify({ email }),
+    })
+      .then((res) => res.json())
+      .then((data) => localStorage.setItem("token", data.token));
   };
 
   return (
@@ -43,7 +52,7 @@ export default function Login() {
                 Not a member?{" "}
                 <Link
                   to="/register"
-                  className="font-semibold text-indigo-600 hover:text-indigo-500"
+                  className="font-semibold text-teal-600 hover:text-teal-500"
                 >
                   Register
                 </Link>
@@ -67,7 +76,7 @@ export default function Login() {
                         type="email"
                         autoComplete="email"
                         required
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
                       />
                     </div>
                   </div>
@@ -98,7 +107,7 @@ export default function Login() {
                             errorMessage.style.display = "none";
                           }
                         }}
-                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        className="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-teal-600 sm:text-sm sm:leading-6"
                       />
                       <p
                         className="mt-2 text-sm text-red-600 password-error-message"
@@ -115,7 +124,7 @@ export default function Login() {
                         id="remember-me"
                         name="remember-me"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        className="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-600"
                       />
                       <label
                         htmlFor="remember-me"
@@ -128,7 +137,7 @@ export default function Login() {
                     <div className="text-sm leading-6">
                       <a
                         href="#"
-                        className="font-semibold text-indigo-600 hover:text-indigo-500"
+                        className="font-semibold text-teal-600 hover:text-teal-500"
                       >
                         Forgot password?
                       </a>
@@ -138,7 +147,7 @@ export default function Login() {
                   <div>
                     <button
                       type="submit"
-                      className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                      className="flex w-full justify-center rounded-md bg-teal-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
                     >
                       Sign in
                     </button>
